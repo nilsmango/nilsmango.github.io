@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Dashboard</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+
+  <style id="compiled-css" type="text/css">
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica Neue, sans-serif;
+}
+
+#alles {
+  width: 600px;
+  height: 800px;
+  margin: auto;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+
+#alert {
+  background-color: rgb(240, 240, 240);
+  border-left: 3px solid black;
+  padding: 5px 5px;
+  width: 50%;
+  float: none;
+}
+
+.clearfix {
+  display: flex;
+  font-size: 25px;
+}
+
+.stoic-quote {
+  background-color: rgb(70, 70, 70);
+  color: white;
+  padding: 20px 20px;
+  width: 49.9%;
+  font-style: normal;
+  float: left;
+}
+.joke {
+  background-color: rgb(70, 70, 70);
+  color: white;
+  padding: 20px 20px;
+  width: 49.9%;
+  margin-left: 2px;
+  font-style: normal;
+  float: right;
+}
+
+.weatherwidget-io {
+  margin: 0px 0px 35px;
+}
+.tradingview-widget-container {
+  margin: 10px -7px 35px;
+}
+
+    /* EOS */
+  </style>
+
+  <script id="insert"></script>
+
+
+    <script src="/js/stringify.js?fb85c6454dace8cae878a1cdbaa07f21be32cac6" charset="utf-8"></script>
+    <script>
+      const customConsole = (w) => {
+        const pushToConsole = (payload, type) => {
+          w.parent.postMessage({
+            console: {
+              payload: stringify(payload),
+              type:    type
+            }
+          }, "*")
+        }
+
+        w.onerror = (message, url, line, column) => {
+          // the line needs to correspond with the editor panel
+          // unfortunately this number needs to be altered every time this view is changed
+          line = line - 70
+          if (line < 0){
+            pushToConsole(message, "error")
+          } else {
+            pushToConsole(`[${line}:${column}] ${message}`, "error")
+          }
+        }
+
+        let console = (function(systemConsole){
+          return {
+            log: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "log")
+              systemConsole.log.apply(this, args)
+            },
+            info: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "info")
+              systemConsole.info.apply(this, args)
+            },
+            warn: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "warn")
+              systemConsole.warn.apply(this, args)
+            },
+            error: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "error")
+              systemConsole.error.apply(this, args)
+            },
+            system: function(arg){
+              pushToConsole(arg, "system")
+            },
+            clear: function(){
+              systemConsole.clear.apply(this, {})
+            },
+            time: function(){
+              let args = Array.from(arguments)
+              systemConsole.time.apply(this, args)
+            },
+            assert: function(assertion, label){
+              if (!assertion){
+                pushToConsole(label, "log")
+              }
+
+              let args = Array.from(arguments)
+              systemConsole.assert.apply(this, args)
+            }
+          }
+        }(window.console))
+
+        window.console = { ...window.console, ...console }
+
+        console.system("Running fiddle")
+      }
+
+      if (window.parent){
+        customConsole(window)
+      }
+    </script>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<body>
+<div id="alles">
+<h1>Heute ist ein guter Tag!</h1>
+<div id="alert">
+This is an alert.<br>
+Be alert!<br>
+Today is a good day!
+</div>
+<a class="weatherwidget-io" href="https://forecast7.com/de/47d567d59/basel/" data-label_1="BASEL" data-label_2="Wetter" >BASEL Wetter</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+<div class="clearfix">
+<div class="stoic-quote">
+<div class="quote" id="js-stoic-quote"></div>
+<div class="quote" id="js-stoic-quote2"></div>
+</div>
+
+<div class="joke" id="js-joke">
+</div>
+</div>
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+  {
+  "colorTheme": "light",
+  "dateRange": "1D",
+  "showChart": false,
+  "locale": "de_DE",
+  "width": "299",
+  "height": "250",
+  "largeChartUrl": "",
+  "isTransparent": true,
+  "showSymbolLogo": false,
+  "tabs": [
+    {
+      "title": "Indizes",
+      "symbols": [
+        {
+          "s": "KRAKEN:ETHUSD",
+          "d": "ETH USD"
+        },
+        {
+          "s": "KRAKEN:BTCUSD",
+          "d": "BTC USD"
+        },
+        {
+          "s": "NYSE:GME"
+        }
+      ],
+      "originalTitle": "Indices"
+    }
+  ]
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+
+</div>
+
+</body>
+</html>
+
+    <script type="text/javascript">//<![CDATA[
+
+
+const endpoint = 'https://stoicquotesapi.com/v1/api/quotes/random';
+
+async function getQuote() {
+
+  try {
+    const response = await fetch(endpoint)
+    // If the response is not 200 OK...
+    if (!response.ok) {
+      // ...throw an error. This causes control flow
+      // to skip to the `catch` block below.
+      throw Error(response.statusText)
+    }
+
+    const json = await response.json();
+    displayQuote(json.body, json.author);
+  } catch (err) {
+    console.log(err)
+    alert('Failed to fetch new stoic quote');
+  }
+}
+
+function displayQuote(quote, author) {
+const quoteText = document.querySelector("#js-stoic-quote");
+const quoteText2 =
+document.querySelector("#js-stoic-quote2");
+quoteText.textContent = quote;
+quoteText2.textContent = "- " + author;
+}
+
+getQuote();
+
+
+
+
+async function getJoke() {
+
+  try {
+    const response = await fetch("https://icanhazdadjoke.com/", {
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+
+    // If the response is not 200 OK...
+    if (!response.ok) {
+      // ...throw an error. This causes control flow
+      // to skip to the `catch` block below.
+      throw Error(response.statusText)
+    }
+
+    const json = await response.json();
+    displayJoke(json.joke);
+  } catch (err) {
+    console.log(err)
+    alert('Failed to fetch new stoic quote');
+  }
+}
+
+function displayJoke(joke) {
+const jokeText = document.querySelector("#js-joke");
+jokeText.textContent = joke;
+}
+
+getJoke();
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "hzw4bsnt"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+    <script>
+      let allLines = []
+
+      window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+      })
+    </script>
+
+</body>
+</html>
