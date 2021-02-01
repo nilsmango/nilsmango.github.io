@@ -21,6 +21,7 @@
   <style id="compiled-css" type="text/css">
       * {
   box-sizing: border-box;
+
 }
 
 body {
@@ -39,42 +40,38 @@ h1 {
 }
 
 #alert {
-  background-color: rgb(240, 240, 240);
-  border-left: 3px solid black;
-  padding: 5px 5px;
-  width: 50%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  padding: 10px 10px;
+  margin: auto;
+
+  width: 590px;
   float: none;
 }
 
 .clearfix {
-  display: flex;
-  font-size: 25px;
+  font-size: 70px;
 }
 
 .stoic-quote {
-  background-color: rgb(70, 70, 70);
-  color: white;
-  padding: 20px 20px;
-  width: 49.9%;
+  font-family: Times New Roman;
+ padding: 30px 5px;
+  width: 100%;
   font-style: normal;
   float: left;
 }
 .joke {
-  background-color: rgb(70, 70, 70);
-  color: white;
-  padding: 20px 20px;
-  width: 49.9%;
-  margin-left: 2px;
-  font-style: normal;
-  float: right;
+
+  padding: 30px 5px;
+  width: 100%;
+
+  font-style: italic;
+  float: left;
 }
 
-.weatherwidget-io {
-  margin: 0px 0px 35px;
-}
-.tradingview-widget-container {
-  margin: 10px -7px 35px;
-}
+
 
     /* EOS */
   </style>
@@ -82,7 +79,7 @@ h1 {
   <script id="insert"></script>
 
 
-    <script src="/js/stringify.js?fb85c6454dace8cae878a1cdbaa07f21be32cac6" charset="utf-8"></script>
+    <script src="/js/stringify.js?db19d0435ead658b2139eaa6ebdb7eb83f7b999e" charset="utf-8"></script>
     <script>
       const customConsole = (w) => {
         const pushToConsole = (payload, type) => {
@@ -163,18 +160,13 @@ h1 {
 <html>
 <body>
 <div id="alles">
-<h1>Heute ist ein guter Tag!</h1>
+
 <div id="alert">
-This is an alert.<br>
-Be alert!<br>
-Today is a good day!
+TODAY IS A GOOD DAY!
 </div>
-<a class="weatherwidget-io" href="https://forecast7.com/de/47d567d59/basel/" data-label_1="BASEL" data-label_2="Wetter" >BASEL Wetter</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
+
 <div class="clearfix">
-<div class="stoic-quote">
+<div class="stoic-quote" id="stoicjs">
 <div class="quote" id="js-stoic-quote"></div>
 <div class="quote" id="js-stoic-quote2"></div>
 </div>
@@ -183,43 +175,7 @@ Today is a good day!
 </div>
 </div>
 
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-  {
-  "colorTheme": "light",
-  "dateRange": "1D",
-  "showChart": false,
-  "locale": "de_DE",
-  "width": "299",
-  "height": "250",
-  "largeChartUrl": "",
-  "isTransparent": true,
-  "showSymbolLogo": false,
-  "tabs": [
-    {
-      "title": "Indizes",
-      "symbols": [
-        {
-          "s": "KRAKEN:ETHUSD",
-          "d": "ETH USD"
-        },
-        {
-          "s": "KRAKEN:BTCUSD",
-          "d": "BTC USD"
-        },
-        {
-          "s": "NYSE:GME"
-        }
-      ],
-      "originalTitle": "Indices"
-    }
-  ]
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->
+
 
 
 </div>
@@ -296,6 +252,29 @@ jokeText.textContent = joke;
 getJoke();
 
 
+
+var qu;
+var slogan;
+function rndqu(min, max){
+
+  qu =  Math.floor(Math.random() * (max - min + 1)) + min;
+
+    switch(qu){
+        case 1:
+            slogan = "stoicjs";
+            break;
+        case 2:
+            slogan = "js-joke";
+            break;
+        default:
+            slogan = "js-joke";
+    }
+    document.getElementById(slogan).style.display = "none";
+}
+
+rndqu(1, 2);
+
+
   //]]></script>
 
   <script>
@@ -303,7 +282,7 @@ getJoke();
     if (window.parent && window.parent.parent){
       window.parent.parent.postMessage(["resultsFrame", {
         height: document.body.getBoundingClientRect().height,
-        slug: "hzw4bsnt"
+        slug: ""
       }], "*")
     }
 
