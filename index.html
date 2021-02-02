@@ -15,13 +15,12 @@
 
   ></script>
 
-
     <link rel="stylesheet" type="text/css" href="/css/result-light.css">
 
 
   <style id="compiled-css" type="text/css">
       * {
-  box-sizing: border-box;
+
 
 }
 
@@ -29,11 +28,7 @@ body {
   font-family: Helvetica Neue, sans-serif;
 }
 
-#alles {
-  width: 600px;
-  height: 800px;
-  margin: auto;
-}
+
 
 h1 {
   color: black;
@@ -48,7 +43,7 @@ h1 {
   padding: 10px;
   margin: auto;
   width: 500px;
-  float: none;
+
 }
 
 .clearfix {
@@ -58,17 +53,17 @@ h1 {
 .stoic-quote {
   font-family: "Times New Roman", Times, serif;
  padding: 30px 10px;
-  width: 500px;
+  width: 550px;
   font-style: normal;
-  float: left;
+  margin: auto;
+
 }
 .joke {
 
   padding: 30px 10px;
-  width: 500px;
-
+  width: 550px;
+  margin: auto;
   font-style: italic;
-  float: left;
 }
 
 
@@ -79,7 +74,7 @@ h1 {
   <script id="insert"></script>
 
 
-    <script src="/js/stringify.js?b36489e6dceb4e23da1fd46f45b9e5a233170201" charset="utf-8"></script>
+    <script src="/js/stringify.js?d6d238aaf9482342aa43a18b2d01a76d2c99a31b" charset="utf-8"></script>
     <script>
       const customConsole = (w) => {
         const pushToConsole = (payload, type) => {
@@ -159,7 +154,7 @@ h1 {
     <!DOCTYPE html>
 <html>
 <body>
-<div id="alles">
+
 
 <div id="date_dependent" class="alert">
 
@@ -178,12 +173,14 @@ h1 {
 
 
 
-</div>
+
 
 </body>
 </html>
 
     <script type="text/javascript">//<![CDATA[
+
+
 
 
 var date=new Date();
@@ -214,6 +211,7 @@ function SetDivContent() {
 SetDivContent();
 
 
+
 const endpoint = 'https://stoicquotesapi.com/v1/api/quotes/random';
 
 async function getQuote() {
@@ -242,6 +240,7 @@ document.querySelector("#js-stoic-quote2");
 quoteText.textContent = quote;
 quoteText2.textContent = "- " + author;
 }
+
 
 getQuote();
 
