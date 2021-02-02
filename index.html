@@ -19,12 +19,20 @@
 
 
   <style id="compiled-css" type="text/css">
-
+      * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --canvas-width: 600px;
+  --canvas-height: 800px;
+  --canvas-padding: 30px;
+}
 
 body {
   font-family: Helvetica Neue, sans-serif;
 }
-
 
 h1 {
   color: black;
@@ -70,7 +78,7 @@ h1 {
   <script id="insert"></script>
 
 
-    <script src="/js/stringify.js?d6d238aaf9482342aa43a18b2d01a76d2c99a31b" charset="utf-8"></script>
+    <script src="/js/stringify.js?db19d0435ead658b2139eaa6ebdb7eb83f7b999e" charset="utf-8"></script>
     <script>
       const customConsole = (w) => {
         const pushToConsole = (payload, type) => {
@@ -165,10 +173,6 @@ h1 {
 <div class="joke" id="js-joke">
 </div>
 </div>
-
-
-
-
 
 
 </body>
