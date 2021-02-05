@@ -147,9 +147,15 @@ document.querySelector("#js-stoic-quote2");
 quoteText.textContent = quote;
 quoteText2.textContent = "- " + author;
 var charact = quote.length;
-if (charact < 50) {
 sizer = document.getElementById( 'stoicjs' );
-sizer.style.fontSize = "150%";
+if (charact < 50) {
+sizer.style.fontSize = "70px";
+}
+else if (charact > 80) {
+sizer.style.fontSize = "70px";
+}
+else {
+sizer.style.fontSize = "45px";
 }
 }
 
