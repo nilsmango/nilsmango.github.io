@@ -146,6 +146,11 @@ const quoteText2 =
 document.querySelector("#js-stoic-quote2");
 quoteText.textContent = quote;
 quoteText2.textContent = "- " + author;
+var charact = quote.length;
+if (charact < 47) {
+sizer = document.getElementById( 'stoicjs' );
+sizer.style.fontSize = "150%";
+}
 }
 
 
