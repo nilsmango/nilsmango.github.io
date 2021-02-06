@@ -151,7 +151,13 @@ sizer = document.getElementById( 'stoicjs' );
 if (charact < 50) {
 sizer.style.fontSize = "70px";
 }
-else if (charact > 80) {
+else if (charact >=50 && charact < 70) {
+sizer.style.fontSize = "60px";
+}
+else if (charact >=83 && charact <= 95) {
+sizer.style.fontSize = "45px";
+}
+else if (charact > 95) {
 sizer.style.fontSize = "38px";
 }
 else {
